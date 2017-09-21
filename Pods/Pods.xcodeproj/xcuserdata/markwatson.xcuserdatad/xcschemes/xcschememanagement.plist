@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>CDTDatastore.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>CocoaLumberjack.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FMDB.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ShoppingList.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>437F46A19B0111D754EA1E15028403D3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6A28A038300FBABCA1DF451169FAB3B2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BD79D7E700A6EC429895607ED8040236</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C076899C3E981F84CB4699F455EE965E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
