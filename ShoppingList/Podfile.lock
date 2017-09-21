@@ -1,0 +1,33 @@
+PODS:
+  - CDTDatastore (1.2.1):
+    - CDTDatastore/standard (= 1.2.1)
+  - CDTDatastore/common-dependencies (1.2.1):
+    - CDTDatastore/no-arc
+    - CocoaLumberjack (~> 2.0)
+  - CDTDatastore/no-arc (1.2.1)
+  - CDTDatastore/standard (1.2.1):
+    - CDTDatastore/common-dependencies
+    - FMDB (= 2.6)
+  - CocoaLumberjack (2.4.0):
+    - CocoaLumberjack/Default (= 2.4.0)
+    - CocoaLumberjack/Extensions (= 2.4.0)
+  - CocoaLumberjack/Core (2.4.0)
+  - CocoaLumberjack/Default (2.4.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.4.0):
+    - CocoaLumberjack/Default
+  - FMDB (2.6):
+    - FMDB/standard (= 2.6)
+  - FMDB/standard (2.6)
+
+DEPENDENCIES:
+  - CDTDatastore
+
+SPEC CHECKSUMS:
+  CDTDatastore: 328401a754b8e09da283876a9745ce5fe1349e9a
+  CocoaLumberjack: aa9dcab71bdf9eaf2a63bbd9ddc87863efe45457
+  FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
+
+PODFILE CHECKSUM: d5498eac4c7f8bbcb44df8bfecd2d870d2587c71
+
+COCOAPODS: 1.3.1
