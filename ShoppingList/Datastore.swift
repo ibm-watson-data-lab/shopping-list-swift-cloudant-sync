@@ -31,12 +31,12 @@ class Datastore {
     
     func loadLists() -> [ListMeta] {
         var lists = [ListMeta]()
-        let result = self.datastore.find(["type": "list"])
-        result?.enumerateObjects { rev, idx, stop in
-            let listMeta = ListMeta()
-            listMeta.list = rev
-            listMeta.itemCount = 5
-            listMeta.itemCheckedCount = 4
+        let allLists = self.shoppingListRepository.find()
+        for list in allLists {
+            let items = self.shoppingListRepository.findItems(query: ["type": "item", "list": list.docId!])
+            let listMeta = ListMeta(list: list)
+            listMeta.itemCount = items.count
+            listMeta.itemCount = items.filter{ $0.body["checked"] as! Bool }.count
             lists.append(listMeta)
         }
         return lists
@@ -52,6 +52,21 @@ class Datastore {
         for doc in allDocs {
             try self.datastore.deleteDocument(from: doc)
         }
+    }
+    
+    func loadActiveItems(list: CDTDocumentRevision) -> [CDTDocumentRevision] {
+        let result = self.datastore.find(["type": "item", "list": list.docId!])
+        var items = [CDTDocumentRevision]()
+        result?.enumerateObjects { rev, idx, stop in
+            items.append(rev)
+        }
+        return items
+    }
+    
+    func addItem(title: String, listId: String) throws -> CDTDocumentRevision {
+        let list = try self.shoppingListRepository.get(listId: listId)
+        let item = ShoppingListFactory.newShoppingListItem(title: title, list: list)
+        return try self.shoppingListRepository.putItem(item: item)
     }
 
 }

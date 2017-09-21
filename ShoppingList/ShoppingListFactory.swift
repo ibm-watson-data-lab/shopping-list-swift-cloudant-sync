@@ -16,4 +16,10 @@ class ShoppingListFactory {
         return rev
     }
     
+    static func newShoppingListItem(title: String, list: CDTDocumentRevision) -> CDTDocumentRevision {
+        let rev = CDTDocumentRevision(docId: "item:\(UUID().uuidString)")
+        rev.body = ["type":"item", "title":title, "list":list.docId!]
+        return rev
+    }
+    
 }
