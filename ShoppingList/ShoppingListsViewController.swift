@@ -8,10 +8,9 @@
 
 import UIKit
 
-class ShoppingListsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ShoppingListsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SyncListener {
     
     var lists: [ListMeta] = []
-    let cellReuseIdentifier = "ShoppingListsCell"
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -28,8 +27,17 @@ class ShoppingListsViewController: UIViewController, UITableViewDataSource, UITa
         super.didReceiveMemoryWarning()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        SyncManager.syncListener = self
+        self.reloadLists()
+    }
+    
+    internal func onSyncComplete() {
+        self.reloadLists()
+    }
+    
+    private func reloadLists() {
         self.lists = StateManager.datastore.loadLists()
         self.tableView.reloadData()
     }
@@ -47,24 +55,28 @@ class ShoppingListsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You tapped cell number \(indexPath.row).")
+        StateManager.activeList = self.lists[indexPath.row].list
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            self.lists.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+            do {
+                _ = try StateManager.datastore.deleteList(list: self.lists[indexPath.row].list)
+                self.lists.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            catch {
+                // TODO:
+            }
         }
     }
     
     func getItemsChecked(list: ListMeta) -> String {
         var itemsString = ""
-        if (list.itemCount == 0) {
+        if list.itemCount == 0 {
             itemsString = "0 items"
         }
-        else if (list.itemCount == 1) {
+        else if list.itemCount == 1 {
             itemsString = "1 item \(list.itemCheckedCount > 0 ? "" : "un")checked."
         }
         else {

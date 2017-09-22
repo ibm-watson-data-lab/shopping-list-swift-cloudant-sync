@@ -12,13 +12,25 @@ class ShoppingListFactory {
     
     static func newShoppingList(title: String) -> CDTDocumentRevision {
         let rev = CDTDocumentRevision(docId: "list:\(UUID().uuidString)")
-        rev.body = ["type":"list", "title":title]
+        rev.body = [
+            "type":"list",
+            "version": 1,
+            "title":title,
+            "checked": false,
+            "place": ""
+        ]
         return rev
     }
     
     static func newShoppingListItem(title: String, list: CDTDocumentRevision) -> CDTDocumentRevision {
         let rev = CDTDocumentRevision(docId: "item:\(UUID().uuidString)")
-        rev.body = ["type":"item", "title":title, "list":list.docId!]
+        rev.body = [
+            "type": "item",
+            "version": 1,
+            "list": list.docId!,
+            "title": title,
+            "checked": false
+        ]
         return rev
     }
     

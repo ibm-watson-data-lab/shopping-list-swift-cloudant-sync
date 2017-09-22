@@ -17,9 +17,7 @@ class ShoppingListAddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.doneButtonColor = self.doneButton.tintColor
-        self.doneButton.isEnabled = false
-        self.doneButton.tintColor = UIColor.clear
-        self.doneButton.action = #selector(save)
+        self.disableDoneButton()
         self.textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
@@ -33,8 +31,7 @@ class ShoppingListAddViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.doneButton.isEnabled = false
-        self.doneButton.tintColor = UIColor.clear
+        self.disableDoneButton()
         self.textField.text = ""
     }
     
@@ -46,17 +43,32 @@ class ShoppingListAddViewController: UIViewController {
         catch {
             // TODO:
         }
-        //StateManager.datastore.addItem(title: self.textField.text, listId: StateManager.activeList.docId!)
     }
     
-    @IBAction func textFieldDidChange(_ textField: UITextField) {
-        if (self.textField.text != nil && self.textField?.text != "") {
-            self.doneButton.isEnabled = true
-            self.doneButton.tintColor = self.doneButtonColor
+    func enableDoneButton() {
+        if self.doneButton.isEnabled {
+            return
+        }
+        self.doneButton.isEnabled = true
+        self.doneButton.tintColor = self.doneButtonColor
+        self.doneButton.action = #selector(ShoppingListManageViewController.save)
+    }
+    
+    func disableDoneButton() {
+        if !self.doneButton.isEnabled {
+            return
+        }
+        self.doneButton.isEnabled = false
+        self.doneButton.tintColor = UIColor.clear
+        self.doneButton.action = nil
+    }
+    
+    func textFieldDidChange(_ textField: UITextField) {
+        if (textField.text != nil && textField.text != "") {
+            self.enableDoneButton()
         }
         else {
-            self.doneButton.isEnabled = false
-            self.doneButton.tintColor = UIColor.clear
+            self.disableDoneButton()
         }
     }
     
