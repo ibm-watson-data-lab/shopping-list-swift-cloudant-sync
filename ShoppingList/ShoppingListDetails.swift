@@ -9,7 +9,7 @@
 import CDTDatastore
 import UIKit
 
-class ListMeta {
+class ShoppingListDetails {
     
     public let list: CDTDocumentRevision
     public var itemCount: Int = 0

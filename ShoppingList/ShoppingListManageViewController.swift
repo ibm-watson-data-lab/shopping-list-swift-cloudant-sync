@@ -40,21 +40,21 @@ class ShoppingListManageViewController: UIViewController, UITableViewDataSource,
     }
     
     private func reloadItems() {
-        self.items = StateManager.datastore.loadItems(list: StateManager.activeList!)
+        self.items = StateManager.datastore.loadItems(list: StateManager.activeShoppingList!)
         self.tableView.reloadData()
         self.tableView.setNeedsDisplay()
     }
     
     func save() {
-        print("save")
         do {
-            let item = try StateManager.datastore.addItem(title: self.newItemTitleText, listId: StateManager.activeList!.docId!)
+            let item = try StateManager.datastore.addItem(title: self.newItemTitleText, listId: StateManager.activeShoppingList!.docId!)
             self.items.append(item)
             self.newItemTitleText = ""
             self.disableDoneButton()
             self.tableView.reloadData()
         }
         catch {
+            // TODO:
             print("ERROR \(error)")
         }
     }
@@ -105,7 +105,7 @@ class ShoppingListManageViewController: UIViewController, UITableViewDataSource,
         return self.items.count + 1
     }
     
-    static func setBottomBorderToTextFields(cell: ShoppingListTableCell)  {
+    static func setBottomBorderToTextFields(cell: ShoppingListManageTableCell)  {
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0, y: cell.titleTextField.frame.height - 1, width: cell.titleTextField.frame.width, height: 1)
         bottomLine.backgroundColor = UIColor.lightGray.cgColor // background color
@@ -114,7 +114,7 @@ class ShoppingListManageViewController: UIViewController, UITableViewDataSource,
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:ShoppingListTableCell = self.tableView.dequeueReusableCell(withIdentifier: "ShoppingListCell") as! ShoppingListTableCell!
+        let cell:ShoppingListManageTableCell = self.tableView.dequeueReusableCell(withIdentifier: "ShoppingListManageCell") as! ShoppingListManageTableCell!
         if indexPath.row < self.items.count {
             cell.checkedSwitch.isEnabled = true
             cell.checkedSwitch.isOn = self.items[indexPath.row].body["checked"] as! Bool
@@ -127,6 +127,7 @@ class ShoppingListManageViewController: UIViewController, UITableViewDataSource,
         }
         else {
             cell.checkedSwitch.isEnabled = false
+            cell.checkedSwitch.isOn = false
             cell.checkedSwitch.removeTarget(self, action: nil, for: UIControlEvents.valueChanged)
             cell.titleTextField.isEnabled = true
             cell.titleTextField.text = self.newItemTitleText

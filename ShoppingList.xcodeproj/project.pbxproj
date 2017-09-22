@@ -14,14 +14,14 @@
 		D71D204A1F74124E00E53E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D71D20491F74124E00E53E3D /* Assets.xcassets */; };
 		D71D204D1F74124E00E53E3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D71D204B1F74124E00E53E3D /* LaunchScreen.storyboard */; };
 		D71D20551F74140700E53E3D /* Datastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71D20541F74140700E53E3D /* Datastore.swift */; };
-		D71D20571F741A2300E53E3D /* ListMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71D20561F741A2300E53E3D /* ListMeta.swift */; };
+		D71D20571F741A2300E53E3D /* ShoppingListDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71D20561F741A2300E53E3D /* ShoppingListDetails.swift */; };
 		D71D205A1F741D9800E53E3D /* ShoppingListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71D20591F741D9800E53E3D /* ShoppingListFactory.swift */; };
 		D71D205C1F741E2500E53E3D /* ShoppingListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71D205B1F741E2500E53E3D /* ShoppingListRepository.swift */; };
 		D7A20F801F7435DB001CE337 /* ShoppingListAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A20F7F1F7435DB001CE337 /* ShoppingListAddViewController.swift */; };
 		D7A20F821F7437A2001CE337 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A20F811F7437A2001CE337 /* StateManager.swift */; };
 		D7A20F841F7445BE001CE337 /* ShoppingListsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A20F831F7445BE001CE337 /* ShoppingListsTableCell.swift */; };
 		D7A20F861F744F7F001CE337 /* ShoppingListManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A20F851F744F7F001CE337 /* ShoppingListManageViewController.swift */; };
-		D7A20F881F748AC6001CE337 /* ShoppingListTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A20F871F748AC6001CE337 /* ShoppingListTableCell.swift */; };
+		D7A20F881F748AC6001CE337 /* ShoppingListManageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A20F871F748AC6001CE337 /* ShoppingListManageTableCell.swift */; };
 		D7A20F8A1F74AD3F001CE337 /* SyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A20F891F74AD3F001CE337 /* SyncManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,14 +35,14 @@
 		D71D204C1F74124E00E53E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D71D204E1F74124E00E53E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D71D20541F74140700E53E3D /* Datastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datastore.swift; sourceTree = "<group>"; };
-		D71D20561F741A2300E53E3D /* ListMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListMeta.swift; sourceTree = "<group>"; };
+		D71D20561F741A2300E53E3D /* ShoppingListDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListDetails.swift; sourceTree = "<group>"; };
 		D71D20591F741D9800E53E3D /* ShoppingListFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListFactory.swift; sourceTree = "<group>"; };
 		D71D205B1F741E2500E53E3D /* ShoppingListRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListRepository.swift; sourceTree = "<group>"; };
 		D7A20F7F1F7435DB001CE337 /* ShoppingListAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListAddViewController.swift; sourceTree = "<group>"; };
 		D7A20F811F7437A2001CE337 /* StateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
 		D7A20F831F7445BE001CE337 /* ShoppingListsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListsTableCell.swift; sourceTree = "<group>"; };
 		D7A20F851F744F7F001CE337 /* ShoppingListManageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListManageViewController.swift; sourceTree = "<group>"; };
-		D7A20F871F748AC6001CE337 /* ShoppingListTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListTableCell.swift; sourceTree = "<group>"; };
+		D7A20F871F748AC6001CE337 /* ShoppingListManageTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListManageTableCell.swift; sourceTree = "<group>"; };
 		D7A20F891F74AD3F001CE337 /* SyncManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncManager.swift; sourceTree = "<group>"; };
 		D9DB28B1B20A6F4272DAF4D5 /* Pods-ShoppingList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingList.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShoppingList/Pods-ShoppingList.release.xcconfig"; sourceTree = "<group>"; };
 		FCE0928FBEC2083B1D4FCB5B /* Pods-ShoppingList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShoppingList/Pods-ShoppingList.debug.xcconfig"; sourceTree = "<group>"; };
@@ -99,13 +99,9 @@
 			isa = PBXGroup;
 			children = (
 				D71D20581F741A6000E53E3D /* Model */,
+				D7A20F8B1F75A61E001CE337 /* View */,
 				D71D20421F74124E00E53E3D /* AppDelegate.swift */,
 				D71D20541F74140700E53E3D /* Datastore.swift */,
-				D7A20F7F1F7435DB001CE337 /* ShoppingListAddViewController.swift */,
-				D7A20F851F744F7F001CE337 /* ShoppingListManageViewController.swift */,
-				D71D20441F74124E00E53E3D /* ShoppingListsViewController.swift */,
-				D7A20F871F748AC6001CE337 /* ShoppingListTableCell.swift */,
-				D7A20F831F7445BE001CE337 /* ShoppingListsTableCell.swift */,
 				D7A20F811F7437A2001CE337 /* StateManager.swift */,
 				D7A20F891F74AD3F001CE337 /* SyncManager.swift */,
 				D71D20491F74124E00E53E3D /* Assets.xcassets */,
@@ -119,11 +115,23 @@
 		D71D20581F741A6000E53E3D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D71D20561F741A2300E53E3D /* ListMeta.swift */,
+				D71D20561F741A2300E53E3D /* ShoppingListDetails.swift */,
 				D71D20591F741D9800E53E3D /* ShoppingListFactory.swift */,
 				D71D205B1F741E2500E53E3D /* ShoppingListRepository.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		D7A20F8B1F75A61E001CE337 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D7A20F7F1F7435DB001CE337 /* ShoppingListAddViewController.swift */,
+				D7A20F871F748AC6001CE337 /* ShoppingListManageTableCell.swift */,
+				D7A20F851F744F7F001CE337 /* ShoppingListManageViewController.swift */,
+				D7A20F831F7445BE001CE337 /* ShoppingListsTableCell.swift */,
+				D71D20441F74124E00E53E3D /* ShoppingListsViewController.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,10 +269,10 @@
 			files = (
 				D7A20F8A1F74AD3F001CE337 /* SyncManager.swift in Sources */,
 				D7A20F841F7445BE001CE337 /* ShoppingListsTableCell.swift in Sources */,
-				D7A20F881F748AC6001CE337 /* ShoppingListTableCell.swift in Sources */,
+				D7A20F881F748AC6001CE337 /* ShoppingListManageTableCell.swift in Sources */,
 				D7A20F801F7435DB001CE337 /* ShoppingListAddViewController.swift in Sources */,
 				D7A20F821F7437A2001CE337 /* StateManager.swift in Sources */,
-				D71D20571F741A2300E53E3D /* ListMeta.swift in Sources */,
+				D71D20571F741A2300E53E3D /* ShoppingListDetails.swift in Sources */,
 				D71D20451F74124E00E53E3D /* ShoppingListsViewController.swift in Sources */,
 				D71D20431F74124E00E53E3D /* AppDelegate.swift in Sources */,
 				D71D20551F74140700E53E3D /* Datastore.swift in Sources */,

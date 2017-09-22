@@ -10,17 +10,13 @@ import UIKit
 
 class ShoppingListsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SyncListener {
     
-    var lists: [ListMeta] = []
+    var lists: [ShoppingListDetails] = []
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-//        do {
-//            try StateManager.datastore.deleteAllDocs()
-//        }
-//        catch {}
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,6 +38,8 @@ class ShoppingListsViewController: UIViewController, UITableViewDataSource, UITa
         self.tableView.reloadData()
     }
     
+    // MARK: TableView Related
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.lists.count
     }
@@ -55,7 +53,7 @@ class ShoppingListsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        StateManager.activeList = self.lists[indexPath.row].list
+        StateManager.activeShoppingList = self.lists[indexPath.row].list
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -71,7 +69,7 @@ class ShoppingListsViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    func getItemsChecked(list: ListMeta) -> String {
+    func getItemsChecked(list: ShoppingListDetails) -> String {
         var itemsString = ""
         if list.itemCount == 0 {
             itemsString = "0 items"

@@ -10,6 +10,14 @@ import CDTDatastore
 
 class ShoppingListRepository {
     
+    class ReplicationListener : NSObject, CDTReplicatorDelegate {
+        public func replicatorDidComplete(_ replicator: CDTReplicator) {
+            if replicator.changesProcessed > 0 || replicator.changesProcessed > 0 {
+                SyncManager.onSyncComplete()
+            }
+        }
+    }
+    
     static let iso8601: DateFormatter = {
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .iso8601)
@@ -20,9 +28,27 @@ class ShoppingListRepository {
     }()
     
     let datastore: CDTDatastore
+    let replicationListener = ReplicationListener()
     
     init(datastore: CDTDatastore) {
         self.datastore = datastore
+    }
+    
+    func sync() {
+        //let remote = URL(string: "http://admin:pass@192.168.1.70:35984/shopping-list")!
+        let remote = URL(string: "http://admin:pass@9.24.7.248:35984/shopping-list")!
+        self.datastore.push(to: remote) { error in
+            if let error = error {
+                print("Error performing push replication: \(error)")
+            }
+            do {
+                try self.datastore.pullReplicationSource(remote, username: nil, password: nil, with: self.replicationListener).start()
+            }
+            catch {
+                // TODO:
+                print("ERROR \(error)")
+            }
+        }
     }
     
     public func get(listId: String) throws -> CDTDocumentRevision {
@@ -38,20 +64,26 @@ class ShoppingListRepository {
         return lists
     }
     
-    public func put(list: CDTDocumentRevision) throws -> CDTDocumentRevision {
-        if (list.revId == nil) {
-            list.body["createdAt"] = ShoppingListRepository.iso8601.string(from: Date())
-            list.body["updatedAt"] = ShoppingListRepository.iso8601.string(from: Date())
-            return try self.datastore.createDocument(from: list)
+    public func put(shoppingList: CDTDocumentRevision) throws -> CDTDocumentRevision {
+        let rev: CDTDocumentRevision
+        let shoppingListCopy = CDTDocumentRevision(docId: shoppingList.docId, revisionId: shoppingList.revId, body: shoppingList.body as NSDictionary? as? [AnyHashable: Any], attachments: nil)
+        if (shoppingList.revId == nil) {
+            shoppingListCopy.body["createdAt"] = ShoppingListRepository.iso8601.string(from: Date())
+            shoppingListCopy.body["updatedAt"] = ShoppingListRepository.iso8601.string(from: Date())
+            rev = try self.datastore.createDocument(from: shoppingListCopy)
         }
         else {
-            list.body["updatedAt"] = ShoppingListRepository.iso8601.string(from: Date())
-            return try self.datastore.updateDocument(from: list)
+            shoppingListCopy.body["updatedAt"] = ShoppingListRepository.iso8601.string(from: Date())
+            rev = try self.datastore.updateDocument(from: shoppingListCopy)
         }
+        self.sync()
+        return rev
     }
     
-    public func delete(list: CDTDocumentRevision) throws -> CDTDocumentRevision {
-        return try self.datastore.deleteDocument(from: list)
+    public func delete(shoppingList: CDTDocumentRevision) throws -> CDTDocumentRevision {
+        let rev = try self.datastore.deleteDocument(from: shoppingList)
+        self.sync()
+        return rev
     }
     
     public func getItem(itemId: String) throws -> CDTDocumentRevision {
@@ -67,20 +99,26 @@ class ShoppingListRepository {
         return items
     }
     
-    public func putItem(item: CDTDocumentRevision) throws -> CDTDocumentRevision {
-        if (item.revId == nil) {
-            item.body["createdAt"] = ShoppingListRepository.iso8601.string(from: Date())
-            item.body["updatedAt"] = ShoppingListRepository.iso8601.string(from: Date())
-            return try self.datastore.createDocument(from: item)
+    public func putItem(shoppingListItem: CDTDocumentRevision) throws -> CDTDocumentRevision {
+        let rev: CDTDocumentRevision
+        let shoppingListItemCopy = CDTDocumentRevision(docId: shoppingListItem.docId, revisionId: shoppingListItem.revId, body: shoppingListItem.body as NSDictionary? as? [AnyHashable: Any], attachments: nil)
+        if (shoppingListItem.revId == nil) {
+            shoppingListItemCopy.body["createdAt"] = ShoppingListRepository.iso8601.string(from: Date())
+            shoppingListItemCopy.body["updatedAt"] = ShoppingListRepository.iso8601.string(from: Date())
+            rev = try self.datastore.createDocument(from: shoppingListItemCopy)
         }
         else {
-            item.body["updatedAt"] = ShoppingListRepository.iso8601.string(from: Date())
-            return try self.datastore.updateDocument(from: item)
+            shoppingListItemCopy.body["updatedAt"] = ShoppingListRepository.iso8601.string(from: Date())
+            rev = try self.datastore.updateDocument(from: shoppingListItemCopy)
         }
+        self.sync()
+        return rev
     }
     
-    public func deleteItem(item: CDTDocumentRevision) throws -> CDTDocumentRevision {
-        return try self.datastore.deleteDocument(from: item)
+    public func deleteItem(shoppingListItem: CDTDocumentRevision) throws -> CDTDocumentRevision {
+        let rev = try self.datastore.deleteDocument(from: shoppingListItem)
+        self.sync()
+        return rev
     }
     
 }

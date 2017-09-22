@@ -1,5 +1,5 @@
 //
-//  ShoppingListTableCell.swift
+//  ShoppingListManageTableCell.swift
 //  ShoppingList
 //
 //  Created by Mark Watson on 9/21/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShoppingListTableCell: UITableViewCell {
+class ShoppingListManageTableCell: UITableViewCell {
     
     @IBOutlet var checkedSwitch: UISwitch!
     @IBOutlet var titleTextField: UITextField!

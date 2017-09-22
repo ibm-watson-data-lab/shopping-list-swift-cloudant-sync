@@ -15,35 +15,27 @@ protocol SyncListener {
 class SyncManager {
     
     static var syncListener: SyncListener? = nil
-    private static var timer: Timer?
     private static var running = false
     
     static func startSync() {
         running = true
         let queue = DispatchQueue(label: "com.ibm.shoppinglist.sync", qos: DispatchQoS.userInteractive)
         queue.async {
-            sync()
-        }
-    }
-    
-    static func sync() {
-        StateManager.datastore.sync(onSyncComplete: { changes in
-            if (changes > 0) {
-                DispatchQueue.main.sync {
-                    syncListener?.onSyncComplete()
-                }
-            }
-            if running {
+            while running {
+                StateManager.datastore.shoppingListRepository.sync()
                 sleep(2)
-                sync()
             }
-        })
+        }
     }
     
     static func stopSync() {
         running = false
-        timer?.invalidate()
-        timer = nil
+    }
+    
+    static func onSyncComplete() {
+        DispatchQueue.main.sync {
+            syncListener?.onSyncComplete()
+        }
     }
     
 }

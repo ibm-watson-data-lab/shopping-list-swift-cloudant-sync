@@ -21,6 +21,6 @@ class StateManager {
         }
     }
     
-    public static var activeList: CDTDocumentRevision?
+    public static var activeShoppingList: CDTDocumentRevision?
     
 }
