@@ -99,6 +99,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Shopping Lists" id="E4b-ds-FYU">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="rsw-9y-ZpW">
+                            <connections>
+                                <segue destination="UwB-iO-cfC" kind="show" id="C4a-Yn-5Kc"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="C5m-We-A4i">
                             <connections>
                                 <segue destination="J1G-F2-wPT" kind="show" id="yuC-et-SeQ"/>
@@ -150,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E7h-jF-WkQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1233" y="-412"/>
+            <point key="canvasLocation" x="1233" y="-54"/>
         </scene>
         <!--Shopping List-->
         <scene sceneID="dsA-58-uTk">
@@ -226,7 +231,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YOe-8j-AvK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1232.8" y="323.38830584707648"/>
+            <point key="canvasLocation" x="1233" y="709"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xte-ca-9Ck">
@@ -245,6 +250,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Nh-QU-AvB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-780" y="-54"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="csN-Pa-pCg">
+            <objects>
+                <viewController id="UwB-iO-cfC" userLabel="Settings" customClass="SettingsViewController" customModule="ShoppingList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MLA-vK-0Sh"/>
+                        <viewControllerLayoutGuide type="bottom" id="KKm-40-GmE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bZP-vh-Hp3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sync URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCr-z0-GaB">
+                                <rect key="frame" x="16" y="72" width="75" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="ZKB-BV-V36"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Sh-Z2-snh">
+                                <rect key="frame" x="16" y="101" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="AZx-e4-n5H"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LCr-z0-GaB" firstAttribute="leading" secondItem="bZP-vh-Hp3" secondAttribute="leadingMargin" id="EOG-4k-iKG"/>
+                            <constraint firstItem="6Sh-Z2-snh" firstAttribute="trailing" secondItem="bZP-vh-Hp3" secondAttribute="trailingMargin" id="NLc-Hu-5D6"/>
+                            <constraint firstItem="6Sh-Z2-snh" firstAttribute="top" secondItem="LCr-z0-GaB" secondAttribute="bottom" constant="8" id="OoP-J9-iOv"/>
+                            <constraint firstItem="6Sh-Z2-snh" firstAttribute="leading" secondItem="bZP-vh-Hp3" secondAttribute="leadingMargin" id="d2T-4w-99j"/>
+                            <constraint firstItem="LCr-z0-GaB" firstAttribute="top" secondItem="MLA-vK-0Sh" secondAttribute="bottom" constant="8" id="i8Q-la-db6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="9cl-IV-C0c">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="a4t-fA-t08"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="dGV-ra-aKo"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="dGV-ra-aKo" id="Ztw-z4-fT5"/>
+                        <outlet property="textField" destination="6Sh-Z2-snh" id="F0f-5R-7gU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MGR-vQ-SaP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1232.8" y="-772.26386806596713"/>
         </scene>
     </scenes>
 </document>

@@ -18,7 +18,7 @@ class ShoppingListRepository {
         }
     }
     
-    static let iso8601: DateFormatter = {
+    private static let iso8601: DateFormatter = {
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .iso8601)
         formatter.locale = Locale(identifier: "en_US_POSIX")
@@ -29,14 +29,17 @@ class ShoppingListRepository {
     
     let datastore: CDTDatastore
     let replicationListener = ReplicationListener()
+    var syncUrl: String? = nil
     
     init(datastore: CDTDatastore) {
         self.datastore = datastore
     }
     
     func sync() {
-        //let remote = URL(string: "http://admin:pass@192.168.1.70:35984/shopping-list")!
-        let remote = URL(string: "http://admin:pass@9.24.7.248:35984/shopping-list")!
+        if (self.syncUrl == nil) {
+            return
+        }
+        let remote = URL(string: self.syncUrl!)!
         self.datastore.push(to: remote) { error in
             if let error = error {
                 print("Error performing push replication: \(error)")

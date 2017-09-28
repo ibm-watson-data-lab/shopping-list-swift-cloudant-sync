@@ -11,7 +11,8 @@ import UIKit
 
 class Datastore {
     
-    let datastore: CDTDatastore
+    let settingsDB: CDTDatastore
+    let shoppingListDB: CDTDatastore
     let shoppingListRepository: ShoppingListRepository
     
     init?() {
@@ -21,8 +22,9 @@ class Datastore {
         let path = storeURL.path
         do {
             let manager = try CDTDatastoreManager(directory: path)
-            self.datastore = try manager.datastoreNamed("shopping-list")
-            self.shoppingListRepository = ShoppingListRepository(datastore: self.datastore)
+            self.settingsDB = try manager.datastoreNamed("settings")
+            self.shoppingListDB = try manager.datastoreNamed("shopping-list")
+            self.shoppingListRepository = ShoppingListRepository(datastore: self.shoppingListDB)
         } catch {
             print("Encountered an error: \(error)")
             return nil
@@ -54,7 +56,7 @@ class Datastore {
     }
     
     func loadItems(list: CDTDocumentRevision) -> [CDTDocumentRevision] {
-        let result = self.datastore.find(["type": "item", "list": list.docId!])
+        let result = self.shoppingListDB.find(["type": "item", "list": list.docId!])
         var items = [CDTDocumentRevision]()
         result?.enumerateObjects { rev, idx, stop in
             items.append(rev)
@@ -84,9 +86,9 @@ class Datastore {
     }
     
     func deleteAllDocs() throws {
-        let allDocs = self.datastore.getAllDocuments()
+        let allDocs = self.shoppingListDB.getAllDocuments()
         for doc in allDocs {
-            try self.datastore.deleteDocument(from: doc)
+            try self.shoppingListDB.deleteDocument(from: doc)
         }
     }
 

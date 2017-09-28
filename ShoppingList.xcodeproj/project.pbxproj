@@ -23,6 +23,7 @@
 		D7A20F861F744F7F001CE337 /* ShoppingListManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A20F851F744F7F001CE337 /* ShoppingListManageViewController.swift */; };
 		D7A20F881F748AC6001CE337 /* ShoppingListManageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A20F871F748AC6001CE337 /* ShoppingListManageTableCell.swift */; };
 		D7A20F8A1F74AD3F001CE337 /* SyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A20F891F74AD3F001CE337 /* SyncManager.swift */; };
+		D7F79D7B1F7D79ED0022F43E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F79D7A1F7D79ED0022F43E /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		D7A20F851F744F7F001CE337 /* ShoppingListManageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListManageViewController.swift; sourceTree = "<group>"; };
 		D7A20F871F748AC6001CE337 /* ShoppingListManageTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListManageTableCell.swift; sourceTree = "<group>"; };
 		D7A20F891F74AD3F001CE337 /* SyncManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncManager.swift; sourceTree = "<group>"; };
+		D7F79D7A1F7D79ED0022F43E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D9DB28B1B20A6F4272DAF4D5 /* Pods-ShoppingList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingList.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShoppingList/Pods-ShoppingList.release.xcconfig"; sourceTree = "<group>"; };
 		FCE0928FBEC2083B1D4FCB5B /* Pods-ShoppingList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShoppingList/Pods-ShoppingList.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +127,7 @@
 		D7A20F8B1F75A61E001CE337 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D7F79D7A1F7D79ED0022F43E /* SettingsViewController.swift */,
 				D7A20F7F1F7435DB001CE337 /* ShoppingListAddViewController.swift */,
 				D7A20F871F748AC6001CE337 /* ShoppingListManageTableCell.swift */,
 				D7A20F851F744F7F001CE337 /* ShoppingListManageViewController.swift */,
@@ -277,6 +280,7 @@
 				D71D20431F74124E00E53E3D /* AppDelegate.swift in Sources */,
 				D71D20551F74140700E53E3D /* Datastore.swift in Sources */,
 				D71D205A1F741D9800E53E3D /* ShoppingListFactory.swift in Sources */,
+				D7F79D7B1F7D79ED0022F43E /* SettingsViewController.swift in Sources */,
 				D71D205C1F741E2500E53E3D /* ShoppingListRepository.swift in Sources */,
 				D7A20F861F744F7F001CE337 /* ShoppingListManageViewController.swift in Sources */,
 			);
